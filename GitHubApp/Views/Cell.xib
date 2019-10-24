@@ -9,40 +9,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="136" id="Bf9-aE-TO3" customClass="MyTableViewCell" customModule="GitHubApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="451" height="136"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="57" id="Bf9-aE-TO3" customClass="MyTableViewCell" customModule="GitHubApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="451" height="53"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bf9-aE-TO3" id="hOJ-fR-wZd">
-                <rect key="frame" x="0.0" y="0.0" width="451" height="136"/>
+                <rect key="frame" x="0.0" y="0.0" width="451" height="53"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vl9-zy-Ixl">
-                        <rect key="frame" x="0.0" y="0.0" width="451" height="31"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.77276577878225361" green="0.79844146573604058" blue="0.7690161202179685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="0.29391932520491715" blue="0.38396741885000363" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAN-ar-Sjv">
+                        <rect key="frame" x="9" y="27" width="20" height="20"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="nMr-Et-vYO"/>
+                            <constraint firstAttribute="width" constant="20" id="pKA-SN-Gtw"/>
+                        </constraints>
                     </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Rl-8z-7XI">
-                        <rect key="frame" x="0.0" y="32" width="128" height="33"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.77276577879999997" green="0.79844146569999996" blue="0.76901612019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="0.29391932520000003" blue="0.38396741890000002" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-Zf-WGV">
-                        <rect key="frame" x="0.0" y="66" width="128" height="33"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.77276577879999997" green="0.79844146569999996" blue="0.76901612019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="0.29391932520000003" blue="0.38396741890000002" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRN-7Z-v3s">
-                        <rect key="frame" x="130" y="32" width="321" height="67"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.77276577879999997" green="0.79844146569999996" blue="0.76901612019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="0.29391932520000003" blue="0.38396741890000002" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-EX-DOg">
+                        <rect key="frame" x="9" y="4" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS-OS-4UL">
+                        <rect key="frame" x="35" y="26" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="OSJ-EX-DOg" firstAttribute="leading" secondItem="hOJ-fR-wZd" secondAttribute="leading" constant="9" id="5NR-h9-FHF"/>
+                    <constraint firstItem="vAN-ar-Sjv" firstAttribute="top" secondItem="OSJ-EX-DOg" secondAttribute="bottom" constant="2" id="8qy-kR-qa6"/>
+                    <constraint firstItem="ppS-OS-4UL" firstAttribute="leading" secondItem="vAN-ar-Sjv" secondAttribute="trailing" constant="6" id="9GH-Nj-6eS"/>
+                    <constraint firstItem="OSJ-EX-DOg" firstAttribute="top" secondItem="hOJ-fR-wZd" secondAttribute="top" constant="4" id="Lmu-iB-MT0"/>
+                    <constraint firstItem="ppS-OS-4UL" firstAttribute="top" secondItem="OSJ-EX-DOg" secondAttribute="bottom" constant="1" id="QKm-fc-ihJ"/>
+                    <constraint firstAttribute="bottom" secondItem="ppS-OS-4UL" secondAttribute="bottom" constant="6" id="Wnj-wn-e9S"/>
+                    <constraint firstItem="vAN-ar-Sjv" firstAttribute="leading" secondItem="hOJ-fR-wZd" secondAttribute="leading" constant="9" id="vVL-nw-2Kg"/>
+                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="90.579710144927546" y="99.776785714285708"/>
+            <connections>
+                <outlet property="languageColorView" destination="vAN-ar-Sjv" id="Zhf-Yz-dBf"/>
+                <outlet property="languageLabel" destination="ppS-OS-4UL" id="Ibb-eT-5cv"/>
+                <outlet property="repoNameLabel" destination="OSJ-EX-DOg" id="jWm-ut-leh"/>
+            </connections>
+            <point key="canvasLocation" x="90.579710144927546" y="66.629464285714278"/>
         </tableViewCell>
     </objects>
 </document>

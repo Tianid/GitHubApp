@@ -15,6 +15,7 @@ protocol TableViewViewModelType {
     var token: String? { get set }
     func downloadRepos(token: String?)
     func getRepos() -> [Repo]?
+    func getCellViewModel(indexpath: IndexPath) -> MyTableViewCellModelType
     
     var updateTable: (() -> ())? { get set }
     

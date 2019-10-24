@@ -11,6 +11,8 @@ import Foundation
 class TableViewModel: TableViewViewModelType {
     
     
+    
+    
     var updateTable: (() -> ())?
     var repos: [Repo]?
     var token: String?
@@ -25,12 +27,19 @@ class TableViewModel: TableViewViewModelType {
     }
     
     func downloadRepos(token: String?) {
-        print("start downling")
+        print("start downloading")
         NetworkManage.shared.downloadRepos(token: token) { [weak self] (repo, error) in
             guard let repo = repo else { return }
             self?.repos = repo
             self?.updateTable!()
             print("Downloading is ended succesfully")
         }
+    }
+    
+    func getCellViewModel(indexpath: IndexPath) -> MyTableViewCellModelType {
+        let singleRepo = (self.repos?[indexpath.row])!
+        let cellViewModel = MyTableViewCellViweModel(singleRepo: singleRepo)
+        return cellViewModel
+        
     }
 }

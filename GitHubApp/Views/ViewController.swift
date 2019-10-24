@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     private var myTableView: UITableView!
     private let cellIdentifier = "CellIdent"
     private var myTableViewModel: TableViewViewModelType!
+    private var isFirstStart: Bool = true
+    private var oAuthVC: OAuthViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +23,21 @@ class ViewController: UIViewController {
         myTableViewModel.updateTable = { [weak self] in
             self?.updateTable()
         }
-        let oAuthVC = OAuthViewController(tableViewModel: myTableViewModel)
-        present(oAuthVC, animated: false, completion: nil)
+        oAuthVC = OAuthViewController(tableViewModel: myTableViewModel)
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        guard isFirstStart else { return }
+        isFirstStart = !isFirstStart
+        present(oAuthVC!, animated: false, completion: nil)
+        
+    }
+    
+
+    
     func setUpMyTableView() {
-        myTableView = UITableView()
+        myTableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
         myTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(myTableView)
         NSLayoutConstraint.activate([
@@ -38,7 +48,9 @@ class ViewController: UIViewController {
         ])
         myTableView.dataSource = self
         myTableView.delegate = self
-        myTableView.register(MyTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        myTableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: self.cellIdentifier)
+        myTableView.separatorStyle = .singleLine
+        myTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     func updateTable() {
@@ -56,11 +68,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = String(indexPath.row)
-        return cell
+        let cell = myTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MyTableViewCell
+        cell?.selectionStyle = .none
+        cell?.viewModel = myTableViewModel.getCellViewModel(indexpath: indexPath)
+        return cell!
     }
 }
+
 
 
 

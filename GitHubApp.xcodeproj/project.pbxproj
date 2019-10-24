@@ -20,6 +20,9 @@
 		12E6BD1B2358BF9600DCF91C /* TableViewViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6BD1A2358BF9600DCF91C /* TableViewViewModelType.swift */; };
 		12E6BD1D2358BFC900DCF91C /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6BD1C2358BFC900DCF91C /* TableViewModel.swift */; };
 		12E6BD1F2358C12900DCF91C /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6BD1E2358C12900DCF91C /* OAuthViewController.swift */; };
+		12FE7F9E2361D85300C69CEC /* MyTableViewCellModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE7F9D2361D85300C69CEC /* MyTableViewCellModelType.swift */; };
+		12FE7FA02361D93A00C69CEC /* MyTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE7F9F2361D93A00C69CEC /* MyTableViewCellViewModel.swift */; };
+		12FE7FA22361DBDB00C69CEC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE7FA12361DBDB00C69CEC /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		12E6BD1A2358BF9600DCF91C /* TableViewViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModelType.swift; sourceTree = "<group>"; };
 		12E6BD1C2358BFC900DCF91C /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		12E6BD1E2358C12900DCF91C /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		12FE7F9D2361D85300C69CEC /* MyTableViewCellModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCellModelType.swift; sourceTree = "<group>"; };
+		12FE7F9F2361D93A00C69CEC /* MyTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		12FE7FA12361DBDB00C69CEC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				1261538E2358D1FC0043C651 /* NetworkModels.swift */,
+				12FE7FA12361DBDB00C69CEC /* Colors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				12E6BD1A2358BF9600DCF91C /* TableViewViewModelType.swift */,
+				12FE7F9D2361D85300C69CEC /* MyTableViewCellModelType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -106,6 +114,7 @@
 			children = (
 				12E6BD1C2358BFC900DCF91C /* TableViewModel.swift */,
 				12E6BD1E2358C12900DCF91C /* OAuthViewController.swift */,
+				12FE7F9F2361D93A00C69CEC /* MyTableViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -193,9 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1261538A2358C6190043C651 /* MyTableViewCell.swift in Sources */,
+				12FE7FA22361DBDB00C69CEC /* Colors.swift in Sources */,
 				12E6BD1B2358BF9600DCF91C /* TableViewViewModelType.swift in Sources */,
 				12E6BD1D2358BFC900DCF91C /* TableViewModel.swift in Sources */,
+				12FE7F9E2361D85300C69CEC /* MyTableViewCellModelType.swift in Sources */,
 				12E6BD062358A01D00DCF91C /* ViewController.swift in Sources */,
+				12FE7FA02361D93A00C69CEC /* MyTableViewCellViewModel.swift in Sources */,
 				1261538F2358D1FC0043C651 /* NetworkModels.swift in Sources */,
 				1261538C2358D08C0043C651 /* NetworkManager.swift in Sources */,
 				12E6BD022358A01D00DCF91C /* AppDelegate.swift in Sources */,
