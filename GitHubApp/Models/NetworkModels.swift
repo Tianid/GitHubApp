@@ -19,6 +19,7 @@ struct Repo: Codable {
     let creationDate: String
     let updatingDate: String
     let pushingDate: String
+    let contentsUrl: String
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -31,6 +32,29 @@ struct Repo: Codable {
         case creationDate = "created_at"
         case updatingDate = "updated_at"
         case pushingDate = "pushed_at"
+        case contentsUrl = "contents_url"
         
     }
+}
+
+struct RepoFiles: Codable {
+    let name: String
+    let path: String
+    let size: Int
+    let type: String
+    let links: Links
+    let content: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case path
+        case size
+        case type
+        case links = "_links"
+        case content
+    }
+}
+
+struct Links: Codable {
+    let `self`: String
 }

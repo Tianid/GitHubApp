@@ -12,6 +12,8 @@ import Foundation
 class NetworkManage {
     static let shared: NetworkManage = NetworkManage()
     
+    var token: String?
+    
     
     func downloadRepos(token: String?, complitionHandler: @escaping ([Repo]?, Error?) -> ()) {
         let component = URLComponents(string: REPOS_URL_CONST)
@@ -28,6 +30,24 @@ class NetworkManage {
             } catch {
                 complitionHandler(nil, error)
             }
+        }.resume()
+    }
+    
+    func downloadRepoDataByUrl(url: URL, complitionHandler: @escaping (([RepoFiles]) -> ())) {
+        
+        
+//        urlRequest.setValue("token \(String(describing: token))", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let repoFiles = try JSONDecoder().decode([RepoFiles].self, from: data)
+                complitionHandler(repoFiles)
+                
+            } catch {
+                print(error)
+            }
+            
         }.resume()
     }
 }

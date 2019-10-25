@@ -13,7 +13,7 @@ class OAuthViewController: UIViewController {
     
     private let webView = WKWebView()
     private var oAuthCode = String()
-    let tableViewModel: TableViewViewModelType!
+    var tableViewModel: TableViewViewModelType!
     
     
     init(tableViewModel: TableViewViewModelType) {
@@ -95,6 +95,7 @@ extension OAuthViewController: WKNavigationDelegate {
                 URLSession.shared.dataTask(with: request) { (data, response, error) in
                     guard let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] else { return }
                     guard let token = json["access_token"] as? String else { return }
+                    self.tableViewModel.token = token
                     self.tableViewModel.downloadRepos(token: token)
                 }.resume()
             }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120F0D6823633BE000E86449 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F0D6723633BE000E86449 /* RepoViewController.swift */; };
+		120F0D6A236362CA00E86449 /* RepoViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F0D69236362CA00E86449 /* RepoViewModelType.swift */; };
+		120F0D6C236362E900E86449 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F0D6B236362E900E86449 /* RepoViewModel.swift */; };
+		120F0D6E2363672000E86449 /* HelpEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F0D6D2363672000E86449 /* HelpEnums.swift */; };
 		1261538A2358C6190043C651 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126153892358C6190043C651 /* MyTableViewCell.swift */; };
 		1261538C2358D08C0043C651 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261538B2358D08C0043C651 /* NetworkManager.swift */; };
 		1261538F2358D1FC0043C651 /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261538E2358D1FC0043C651 /* NetworkModels.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		120F0D6723633BE000E86449 /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		120F0D69236362CA00E86449 /* RepoViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModelType.swift; sourceTree = "<group>"; };
+		120F0D6B236362E900E86449 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
+		120F0D6D2363672000E86449 /* HelpEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpEnums.swift; sourceTree = "<group>"; };
 		126153892358C6190043C651 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		1261538B2358D08C0043C651 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1261538E2358D1FC0043C651 /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
@@ -62,6 +70,7 @@
 			children = (
 				1261538E2358D1FC0043C651 /* NetworkModels.swift */,
 				12FE7FA12361DBDB00C69CEC /* Colors.swift */,
+				120F0D6D2363672000E86449 /* HelpEnums.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +114,7 @@
 			children = (
 				12E6BD1A2358BF9600DCF91C /* TableViewViewModelType.swift */,
 				12FE7F9D2361D85300C69CEC /* MyTableViewCellModelType.swift */,
+				120F0D69236362CA00E86449 /* RepoViewModelType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -115,6 +125,7 @@
 				12E6BD1C2358BFC900DCF91C /* TableViewModel.swift */,
 				12E6BD1E2358C12900DCF91C /* OAuthViewController.swift */,
 				12FE7F9F2361D93A00C69CEC /* MyTableViewCellViewModel.swift */,
+				120F0D6B236362E900E86449 /* RepoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -125,6 +136,7 @@
 				12E6BD052358A01D00DCF91C /* ViewController.swift */,
 				126153892358C6190043C651 /* MyTableViewCell.swift */,
 				126153982358ECDF0043C651 /* Cell.xib */,
+				120F0D6723633BE000E86449 /* RepoViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +215,7 @@
 			files = (
 				1261538A2358C6190043C651 /* MyTableViewCell.swift in Sources */,
 				12FE7FA22361DBDB00C69CEC /* Colors.swift in Sources */,
+				120F0D6C236362E900E86449 /* RepoViewModel.swift in Sources */,
 				12E6BD1B2358BF9600DCF91C /* TableViewViewModelType.swift in Sources */,
 				12E6BD1D2358BFC900DCF91C /* TableViewModel.swift in Sources */,
 				12FE7F9E2361D85300C69CEC /* MyTableViewCellModelType.swift in Sources */,
@@ -211,7 +224,10 @@
 				1261538F2358D1FC0043C651 /* NetworkModels.swift in Sources */,
 				1261538C2358D08C0043C651 /* NetworkManager.swift in Sources */,
 				12E6BD022358A01D00DCF91C /* AppDelegate.swift in Sources */,
+				120F0D6E2363672000E86449 /* HelpEnums.swift in Sources */,
 				12E6BD1F2358C12900DCF91C /* OAuthViewController.swift in Sources */,
+				120F0D6A236362CA00E86449 /* RepoViewModelType.swift in Sources */,
+				120F0D6823633BE000E86449 /* RepoViewController.swift in Sources */,
 				12E6BD162358A13F00DCF91C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

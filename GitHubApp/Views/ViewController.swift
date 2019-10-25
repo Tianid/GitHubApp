@@ -73,6 +73,23 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell?.viewModel = myTableViewModel.getCellViewModel(indexpath: indexPath)
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let repoVC = prepareForOpenRepoScreen(indexPath: indexPath) else { return }
+
+        navigationController?.pushViewController(repoVC, animated: true)
+    }
+    
+    func prepareForOpenRepoScreen(indexPath: IndexPath) -> RepoViewController? {
+        guard let repo = myTableViewModel.repos?[indexPath.row] else { return nil }
+        let repoVC = RepoViewController()
+        repoVC.title = repo.name
+        let url = repo.contentsUrl
+        let contentUrl = url.prefix(url.count - 7)
+        repoVC.viewModel = RepoViewModel(path: repo.name, contentUrl: String(contentUrl))
+        return repoVC
+    }
 }
 
 
