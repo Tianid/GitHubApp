@@ -12,8 +12,8 @@ import Foundation
 public let OAUTH_ACCESS_TOKEN_URL_CONST = "https://github.com/login/oauth/access_token"
 public let OAUTH_AUTHORIZE_URL_CONST = "https://github.com/login/oauth/authorize"
 public let GISTS_URL_CONST = "https://api.github.com/gists"
-public let CLIENT_ID_CONST = "a067162b6a4797097cff"
-public let CLIENT_SECRET_CONST = "83e4d3612d9e1ece7c5b675ff52d1650c17f2b10"
+public let CLIENT_ID_CONST = ""
+public let CLIENT_SECRET_CONST = ""
 public let SCHEME_CONST = "login"
 public let REPOS_URL_CONST = "https://api.github.com/users/Tianid/repos"
 
