@@ -33,10 +33,8 @@ class ViewController: UIViewController {
         present(oAuthVC!, animated: false, completion: nil)
         
     }
-    
-
-    
-    func setUpMyTableView() {
+        
+    private func setUpMyTableView() {
         myTableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
         myTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(myTableView)
@@ -53,12 +51,11 @@ class ViewController: UIViewController {
         myTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
-    func updateTable() {
+    private func updateTable() {
         DispatchQueue.main.async { [weak self] in
             self?.myTableView.reloadSections(IndexSet(integer: .zero), with: .fade)
         }
     }
-    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -81,7 +78,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(repoVC, animated: true)
     }
     
-    func prepareForOpenRepoScreen(indexPath: IndexPath) -> RepoViewController? {
+    private func prepareForOpenRepoScreen(indexPath: IndexPath) -> RepoViewController? {
         guard let repo = myTableViewModel.repos?[indexPath.row] else { return nil }
         let repoVC = RepoViewController()
         repoVC.title = repo.name

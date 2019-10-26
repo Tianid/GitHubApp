@@ -28,6 +28,12 @@ class RepoViewModel: RepoViewModelType {
             self?.updateTable?()
         }
     }
+    
+    func getCellViewModel(indexPath: IndexPath) -> RepoCellViewModelType? {
+        guard let singleRepoFile = repoFiles?[indexPath.row] else { return nil }
+        let cellViewModel = RepoCellViewModel(repoFile: singleRepoFile)
+        return cellViewModel
+    }
 
     
     

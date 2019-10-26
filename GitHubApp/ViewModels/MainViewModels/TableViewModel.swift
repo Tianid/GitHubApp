@@ -10,9 +10,6 @@ import Foundation
 
 class TableViewModel: TableViewViewModelType {
     
-    
-    
-    
     var updateTable: (() -> ())?
     var repos: [Repo]?
     var token: String?

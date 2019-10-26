@@ -47,6 +47,19 @@ class NetworkManage {
             } catch {
                 print(error)
             }
+        }.resume()
+    }
+    
+    func downloadRepoFileContent(url: URL, complitionHandler: @escaping ((RepoFiles) -> ())) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let repoFiles = try JSONDecoder().decode(RepoFiles.self, from: data)
+                complitionHandler(repoFiles)
+                
+            } catch {
+                print(error)
+            }
             
         }.resume()
     }

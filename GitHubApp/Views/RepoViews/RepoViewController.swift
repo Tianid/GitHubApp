@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepoViewController: UIViewController {
+class RepoViewController: UIViewController, ScreenType {
 
     private var myTableView: UITableView!
     private let cellIdentifier = "RepoCellIdent"
@@ -17,19 +17,18 @@ class RepoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupMyTableView()
         viewModel?.updateTable = { [weak self] in
             DispatchQueue.main.async {
                 self?.myTableView.reloadData()
             }
         }
         viewModel?.downloadRepoData()
-        print("Details VC")
         // Do any additional setup after loading the view.
     }
     
     
-   private func setup() {
+   private func setupMyTableView() {
     myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
     myTableView?.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(myTableView)
@@ -47,7 +46,9 @@ class RepoViewController: UIViewController {
     myTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     
     // MARK: Dont forget about this:
-    myTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+//    myTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+    myTableView.register(UINib(nibName: "RepoTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+
     
     }
 }
@@ -59,10 +60,31 @@ extension RepoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = myTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as UITableViewCell
-        cell.selectionStyle = .none
+        guard let cell = myTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? RepoTableViewCell else { return UITableViewCell() }
+        cell.viewModel = viewModel?.getCellViewModel(indexPath: indexPath)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let newRepoVC = prepareForShowNextScreen(indexPath: indexPath) else { return }
+        navigationController?.pushViewController(newRepoVC as! UIViewController, animated: true)
+    }
     
+    
+    private func prepareForShowNextScreen(indexPath: IndexPath) -> ScreenType?  {
+        guard let repoFile = viewModel?.repoFiles?[indexPath.row] else { return nil }
+        if repoFile.type == RepoEntityType.dir.rawValue {
+            let newRepoVC = RepoViewController()
+            newRepoVC.title = repoFile.name
+            let url = repoFile.links.`self`
+            newRepoVC.viewModel = RepoViewModel(path: repoFile.name, contentUrl: url)
+            return newRepoVC
+        } else if repoFile.type == RepoEntityType.file.rawValue {
+            let newDetailsVC = DetailsViewController()
+            newDetailsVC.title = repoFile.name
+            newDetailsVC.viewModel = DetailiewModel(repoFile: repoFile)
+            return newDetailsVC
+        }
+        return nil
+    }
 }

@@ -31,7 +31,7 @@ class MyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCellData() {
+    private func setupCellData() {
         self.repoNameLabel.text = viewModel?.repo.fullName
         self.languageColorView.layer.cornerRadius = self.languageColorView.frame.width / 2
         

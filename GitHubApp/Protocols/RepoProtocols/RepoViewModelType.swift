@@ -15,6 +15,9 @@ protocol RepoViewModelType {
     var path: String { get set }
     var contentUrl: String { get set }
     var updateTable: (() -> ())? { get set }
+    
     func downloadRepoData()
+    func getCellViewModel(indexPath: IndexPath) -> RepoCellViewModelType?
+
     
 }
