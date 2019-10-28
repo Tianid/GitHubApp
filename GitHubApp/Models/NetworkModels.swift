@@ -12,7 +12,7 @@ struct Repo: Codable {
     let id: Int
     let name: String
     let fullName: String
-    let language: String
+    let language: String?
     let openIssuesCount: Int
     let forks: Int
     let watchers: Int
@@ -20,6 +20,8 @@ struct Repo: Codable {
     let updatingDate: String
     let pushingDate: String
     let contentsUrl: String
+    let branchesUrl: String
+    let defaultBranch: String
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -33,7 +35,8 @@ struct Repo: Codable {
         case updatingDate = "updated_at"
         case pushingDate = "pushed_at"
         case contentsUrl = "contents_url"
-        
+        case branchesUrl = "branches_url"
+        case defaultBranch = "default_branch"
     }
 }
 
@@ -57,4 +60,8 @@ struct RepoFiles: Codable {
 
 struct Links: Codable {
     let `self`: String
+}
+
+struct Branch: Codable {
+    let name: String
 }

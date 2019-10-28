@@ -56,6 +56,20 @@ class ViewController: UIViewController {
             self?.myTableView.reloadSections(IndexSet(integer: .zero), with: .fade)
         }
     }
+    
+    private func prepareForOpenRepoScreen(indexPath: IndexPath) -> RepoViewController? {
+        guard let repo = myTableViewModel.repos?[indexPath.row] else { return nil }
+        let repoVC = RepoViewController()
+        repoVC.title = repo.name
+        let url = repo.contentsUrl
+        let contentUrl = url.prefix(url.count - 7)
+        let branchesUrl = repo.branchesUrl.prefix(repo.branchesUrl.count - 9)
+        repoVC.viewModel = RepoViewModel(currentBranch: repo.defaultBranch,
+                                         defaultBranch: repo.defaultBranch,
+                                         contentUrl: String(contentUrl),
+                                         branchesUrl: String(branchesUrl))
+        return repoVC
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -76,16 +90,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         guard let repoVC = prepareForOpenRepoScreen(indexPath: indexPath) else { return }
 
         navigationController?.pushViewController(repoVC, animated: true)
-    }
-    
-    private func prepareForOpenRepoScreen(indexPath: IndexPath) -> RepoViewController? {
-        guard let repo = myTableViewModel.repos?[indexPath.row] else { return nil }
-        let repoVC = RepoViewController()
-        repoVC.title = repo.name
-        let url = repo.contentsUrl
-        let contentUrl = url.prefix(url.count - 7)
-        repoVC.viewModel = RepoViewModel(path: repo.name, contentUrl: String(contentUrl))
-        return repoVC
     }
 }
 

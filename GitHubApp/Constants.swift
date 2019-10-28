@@ -17,7 +17,6 @@ public let CLIENT_SECRET_CONST = ""
 public let SCHEME_CONST = "login"
 public let REPOS_URL_CONST = "https://api.github.com/users/Tianid/repos"
 
-
 enum RepoEntityType: String {
     case file = "file"
     case dir = "dir"

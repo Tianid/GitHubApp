@@ -20,8 +20,8 @@ class DetailiewModel: DetailsViewModelType {
     
     func downloadRepoFileContent() {
         guard let url = URL(string: repoFile.links.`self`) else { return }
-        NetworkManage.shared.downloadRepoFileContent(url: url) { [weak self] (content) in
-            if let content = content.content {
+        NetworkManage.shared.downloadRepoFileContent(url: url) { [weak self] (content, error) in
+            if let content = content?.content {
                 self?.content = content
                 self?.updateTextView?()
             }

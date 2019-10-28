@@ -10,29 +10,54 @@ import Foundation
 
 
 class RepoViewModel: RepoViewModelType {
-    var repoFullName: String?
-    var repoName: String?
+    
+    
+    
+    
+    var branchesArray: [Branch]?
     var repoFiles: [RepoFiles]?
-    var path: String
-    var contentUrl: String
     var updateTable: (() -> ())?
     
-    init(path: String, contentUrl:String) {
-        self.path = path
+    var contentUrl: String
+    var currentBranch: String?
+    var defaultBranch: String?
+    var branchesUrl: String?
+    
+    
+    
+    init(currentBranch: String, defaultBranch: String, contentUrl: String, branchesUrl: String, branchesArray: [Branch]? = nil ) {
         self.contentUrl = contentUrl
+        self.currentBranch = currentBranch
+        self.defaultBranch = defaultBranch
+        self.branchesUrl = branchesUrl
+        self.branchesArray = branchesArray
     }
     
     func downloadRepoData() {
-        NetworkManage.shared.downloadRepoDataByUrl(url: URL(string:self.contentUrl)!) { [weak self] ( repoFiles) in
+        NetworkManage.shared.downloadRepoDataByUrl(url: URL(string:self.contentUrl)!) { [weak self] ( repoFiles, error ) in
+            guard let repoFiles = repoFiles else {
+                self?.repoFiles = nil
+                self?.updateTable?()
+                return
+            }
             self?.repoFiles = repoFiles
-            self?.updateTable?()
+            guard (self?.branchesArray) == nil else { self?.updateTable?(); return }
+            NetworkManage.shared.downloadRepoBranches(url: URL(string: self!.branchesUrl!)!) { [weak self] (branches, error) in
+                guard let branches = branches else { return }
+                self?.branchesArray = branches
+                self?.updateTable?()
+            }
         }
     }
-    
+
     func getCellViewModel(indexPath: IndexPath) -> RepoCellViewModelType? {
         guard let singleRepoFile = repoFiles?[indexPath.row] else { return nil }
         let cellViewModel = RepoCellViewModel(repoFile: singleRepoFile)
         return cellViewModel
+    }
+    
+    func setContentUrl(url: String) {
+        self.contentUrl = url
     }
 
     

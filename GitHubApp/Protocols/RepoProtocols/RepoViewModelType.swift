@@ -10,14 +10,17 @@ import Foundation
 
 protocol RepoViewModelType {
     var repoFiles: [RepoFiles]? { get set }
-    var repoFullName: String? { get set }
-    var repoName: String? { get set }
-    var path: String { get set }
     var contentUrl: String { get set }
     var updateTable: (() -> ())? { get set }
+    var currentBranch: String? { get set }
+    var defaultBranch: String? { get set }
+    var branchesUrl: String? { get set }
+    var branchesArray: [Branch]? { get set }
+    
     
     func downloadRepoData()
     func getCellViewModel(indexPath: IndexPath) -> RepoCellViewModelType?
+    func setContentUrl(url: String)
 
     
 }

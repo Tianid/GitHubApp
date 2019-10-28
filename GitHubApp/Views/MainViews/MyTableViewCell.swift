@@ -33,9 +33,17 @@ class MyTableViewCell: UITableViewCell {
     
     private func setupCellData() {
         self.repoNameLabel.text = viewModel?.repo.fullName
+        guard let language = viewModel?.repo.language else {
+            self.languageColorView.isHidden = true
+            self.languageLabel.isHidden = true
+            return
+        }
+        self.languageColorView.isHidden = false
+        self.languageLabel.isHidden = false
         self.languageColorView.layer.cornerRadius = self.languageColorView.frame.width / 2
+        self.languageColorView.layer.borderWidth = 1
         
-        switch viewModel?.repo.language {
+        switch language {
         case Colors.black.rawValue:
             self.languageColorView.backgroundColor = .black
         case Colors.blue.rawValue:
@@ -51,5 +59,4 @@ class MyTableViewCell: UITableViewCell {
         }
         self.languageLabel.text = viewModel?.repo.language
     }
-
 }

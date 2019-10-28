@@ -45,6 +45,7 @@
                     <constraint firstItem="ppS-OS-4UL" firstAttribute="top" secondItem="OSJ-EX-DOg" secondAttribute="bottom" constant="1" id="QKm-fc-ihJ"/>
                     <constraint firstAttribute="bottom" secondItem="ppS-OS-4UL" secondAttribute="bottom" constant="6" id="Wnj-wn-e9S"/>
                     <constraint firstItem="vAN-ar-Sjv" firstAttribute="leading" secondItem="hOJ-fR-wZd" secondAttribute="leading" constant="9" id="vVL-nw-2Kg"/>
+                    <constraint firstAttribute="bottom" secondItem="vAN-ar-Sjv" secondAttribute="bottom" constant="6" id="wae-zx-kHW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

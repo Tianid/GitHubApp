@@ -31,7 +31,6 @@ class OAuthViewController: UIViewController {
         let request = prepareRequestForAuthorize()
         webView.load(request)
         webView.navigationDelegate = self
-
     }
     
     private func setupWebView() {
@@ -46,8 +45,7 @@ class OAuthViewController: UIViewController {
                webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
            ])
        }
-    
-    
+
     private func prepareRequestForAuthorize() -> URLRequest {
         var urlComponents = URLComponents(string: OAUTH_AUTHORIZE_URL_CONST)
         urlComponents?.queryItems = [
@@ -68,7 +66,6 @@ class OAuthViewController: UIViewController {
             URLQueryItem(name: "client_secret", value: "\(CLIENT_SECRET_CONST)"),
             URLQueryItem(name: "code", value: "\(oAuthCode)")
         ]
-        
         guard let url = urlComponents.url else { return nil }
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -76,12 +73,6 @@ class OAuthViewController: UIViewController {
         
         return request
     }
-    
-    func getReposInfo() {
-        
-    }
-    
-
 }
 
 extension OAuthViewController: WKNavigationDelegate {

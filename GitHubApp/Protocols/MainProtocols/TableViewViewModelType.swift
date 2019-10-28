@@ -10,13 +10,15 @@ import Foundation
 
 
 protocol TableViewViewModelType {
-    func numberOfRows() -> Int?
     var repos: [Repo]? { get set }
     var token: String? { get set }
+    var updateTable: (() -> ())? { get set }
+
     func downloadRepos(token: String?)
     func getRepos() -> [Repo]?
     func getCellViewModel(indexpath: IndexPath) -> MyTableViewCellModelType
+    func numberOfRows() -> Int?
+
     
-    var updateTable: (() -> ())? { get set }
     
 }
