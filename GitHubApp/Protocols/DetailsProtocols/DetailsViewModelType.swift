@@ -12,6 +12,7 @@ protocol DetailsViewModelType {
     var repoFile: RepoFiles { get set }
     var content: String? { get set }
     var updateTextView: (() -> ())? { get set }
+    var currentBranch: String? { get set }
     
     func downloadRepoFileContent()
 }

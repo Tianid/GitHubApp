@@ -10,12 +10,9 @@ import Foundation
 
 
 class MyTableViewCellViweModel: MyTableViewCellModelType {
-    
     var repo: Repo
     
     init(singleRepo: Repo) {
         self.repo = singleRepo
     }
-    
-    
 }

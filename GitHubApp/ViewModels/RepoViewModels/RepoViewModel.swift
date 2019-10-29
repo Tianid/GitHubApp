@@ -10,10 +10,6 @@ import Foundation
 
 
 class RepoViewModel: RepoViewModelType {
-    
-    
-    
-    
     var branchesArray: [Branch]?
     var repoFiles: [RepoFiles]?
     var updateTable: (() -> ())?
@@ -22,8 +18,6 @@ class RepoViewModel: RepoViewModelType {
     var currentBranch: String?
     var defaultBranch: String?
     var branchesUrl: String?
-    
-    
     
     init(currentBranch: String, defaultBranch: String, contentUrl: String, branchesUrl: String, branchesArray: [Branch]? = nil ) {
         self.contentUrl = contentUrl
@@ -34,7 +28,8 @@ class RepoViewModel: RepoViewModelType {
     }
     
     func downloadRepoData() {
-        NetworkManage.shared.downloadRepoDataByUrl(url: URL(string:self.contentUrl)!) { [weak self] ( repoFiles, error ) in
+        guard let url = getUrlRequest(string:self.contentUrl) else { return }
+        NetworkManage.shared.downloadRepoDataByUrl(url: url) { [weak self] ( repoFiles, error ) in
             guard let repoFiles = repoFiles else {
                 self?.repoFiles = nil
                 self?.updateTable?()
@@ -42,14 +37,15 @@ class RepoViewModel: RepoViewModelType {
             }
             self?.repoFiles = repoFiles
             guard (self?.branchesArray) == nil else { self?.updateTable?(); return }
-            NetworkManage.shared.downloadRepoBranches(url: URL(string: self!.branchesUrl!)!) { [weak self] (branches, error) in
+            guard let url = self?.getUrlRequest(string: (self?.branchesUrl!)!) else { return }
+            NetworkManage.shared.downloadRepoBranches(url: url) { [weak self] (branches, error) in
                 guard let branches = branches else { return }
                 self?.branchesArray = branches
                 self?.updateTable?()
             }
         }
     }
-
+    
     func getCellViewModel(indexPath: IndexPath) -> RepoCellViewModelType? {
         guard let singleRepoFile = repoFiles?[indexPath.row] else { return nil }
         let cellViewModel = RepoCellViewModel(repoFile: singleRepoFile)
@@ -59,7 +55,14 @@ class RepoViewModel: RepoViewModelType {
     func setContentUrl(url: String) {
         self.contentUrl = url
     }
-
     
-    
+    private func getUrlRequest(string: String) -> URL? {
+        var component = URLComponents(string: string)
+        component?.queryItems = [
+            URLQueryItem(name: "access_token", value: "\(NetworkManage.shared.token!)"),
+            URLQueryItem(name: "ref", value: currentBranch!),
+        ]
+        let urls = component?.url
+        return urls
+    }
 }

@@ -15,12 +15,9 @@ class NetworkManage {
     var token: String?
     
     func downloadRepos(token: String?, complitionHandler: @escaping ([Repo]?, Error?) -> ()) {
-        let component = URLComponents(string: REPOS_URL_CONST)
-        let url = component?.url
-        var urlRequest = URLRequest(url: url!)
-        guard let token = token else { return }
-        urlRequest.setValue("token \(token)", forHTTPHeaderField: "Authorization")
-        
+        guard let url = getUrl() else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -34,10 +31,10 @@ class NetworkManage {
     }
     
     func downloadRepoDataByUrl(url: URL, complitionHandler: @escaping (([RepoFiles]?, Error?) -> ())) {
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
         
-//        urlRequest.setValue("token \(String(describing: token))", forHTTPHeaderField: "Authorization")
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else { return }
             do {
                 let repoFiles = try JSONDecoder().decode([RepoFiles].self, from: data)
@@ -67,7 +64,10 @@ class NetworkManage {
     }
     
     func downloadRepoBranches(url: URL, complitionHandler: @escaping (([Branch]?, Error?) -> ())) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else { return }
             do {
                 let branches = try JSONDecoder().decode([Branch].self, from: data)
@@ -78,5 +78,14 @@ class NetworkManage {
                 complitionHandler(nil,error)
             }
         }.resume()
+    }
+    
+    private func getUrl() -> URL? {
+        var component = URLComponents(string: REPOS_URL_CONST)
+        component?.queryItems = [
+            URLQueryItem(name: "visibility", value: "all"),
+            URLQueryItem(name: "access_token", value: "\(token!)"),
+        ]
+        return component?.url
     }
 }

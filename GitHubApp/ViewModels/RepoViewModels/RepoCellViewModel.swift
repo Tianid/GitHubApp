@@ -14,5 +14,4 @@ class RepoCellViewModel: RepoCellViewModelType {
     init(repoFile: RepoFiles) {
         self.repoFile = repoFile
     }
-    
 }

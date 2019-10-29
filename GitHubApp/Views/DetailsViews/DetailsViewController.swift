@@ -40,7 +40,8 @@ class DetailsViewController: UIViewController, ScreenType {
     private func prepareUpdateFunc() {
         DispatchQueue.main.async {
             let result = Base64EncoderDecoder.base64Decoded(string: (self.viewModel?.content)!)
-            self.myTextView.text = result!
+            guard let textFile = result else { return }
+            self.myTextView.text = textFile
         }
     }
 }

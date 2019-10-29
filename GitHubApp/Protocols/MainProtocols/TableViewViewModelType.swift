@@ -11,7 +11,6 @@ import Foundation
 
 protocol TableViewViewModelType {
     var repos: [Repo]? { get set }
-    var token: String? { get set }
     var updateTable: (() -> ())? { get set }
 
     func downloadRepos(token: String?)

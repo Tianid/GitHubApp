@@ -9,7 +9,6 @@
 import UIKit
 
 class RepoTableViewCell: UITableViewCell {
-
     @IBOutlet weak var entityTypeImageView: UIImageView!
     @IBOutlet weak var entityNameLabel: UILabel!
     
@@ -31,7 +30,6 @@ class RepoTableViewCell: UITableViewCell {
     }
     
     private func setupCell() {
-              
         guard let repo = viewModel?.repoFile else { return }
         switch repo.type {
         case RepoEntityType.file.rawValue:

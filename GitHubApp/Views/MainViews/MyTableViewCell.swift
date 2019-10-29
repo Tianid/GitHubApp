@@ -22,6 +22,7 @@ class MyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       
         // Initialization code
     }
 
@@ -32,6 +33,9 @@ class MyTableViewCell: UITableViewCell {
     }
     
     private func setupCellData() {
+//        repoNameLabel.minimumScaleFactor = 30
+//        repoNameLabel.adjustsFontSizeToFitWidth = true
+//        layoutIfNeeded()
         self.repoNameLabel.text = viewModel?.repo.fullName
         guard let language = viewModel?.repo.language else {
             self.languageColorView.isHidden = true

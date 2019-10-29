@@ -18,12 +18,7 @@ class Base64EncoderDecoder {
     }
     
     static  func base64Decoded(string: String) -> String? {
-        var newString = ""
-        for i in string {
-            if i != "\n" {
-                newString.append(i)
-            }
-        }
+        let newString = string.replacingOccurrences(of: "\n", with: "")
         guard let data = Data(base64Encoded: newString) else { return nil }
         return String(data: data, encoding: .utf8)
        }

@@ -9,12 +9,9 @@
 import Foundation
 
 class TableViewModel: TableViewViewModelType {
-    
     var updateTable: (() -> ())?
     var repos: [Repo]?
-    var token: String?
    
-    
     func numberOfRows() -> Int? {
         return repos?.count
     }
@@ -37,6 +34,5 @@ class TableViewModel: TableViewViewModelType {
         let singleRepo = (self.repos?[indexpath.row])!
         let cellViewModel = MyTableViewCellViweModel(singleRepo: singleRepo)
         return cellViewModel
-        
     }
 }

@@ -70,38 +70,11 @@ class RepoViewController: UIViewController, ScreenType {
     }
     
     private func selectMenuAlertAction(string: String) {
+        guard viewModel?.currentBranch != string else { return }
         viewModel?.currentBranch = string
-        if !(viewModel?.contentUrl.contains(string))! {
-            viewModel?.setContentUrl(url: prepareSttringUrl(string: viewModel!.contentUrl) + "\(String(viewModel!.currentBranch!))")
-        }
-        
-        
         let indexSet = IndexSet(arrayLiteral: 0)
         myTableView.reloadSections(indexSet, with: .fade)
-        
         viewModel?.downloadRepoData()
-    }
-    
-    
-    private func prepareSttringUrl(string: String) -> String {
-        var newString = ""
-        var flag = false
-        for i in string {
-            if i != "=" {
-                newString.append(i)
-            } else {
-                flag = true
-                newString.append(i)
-                return newString
-            }
-        }
-        
-        if !flag {
-            var str = String(newString.prefix(newString.count - 1))
-            str.append("?ref=")
-            return str
-        }
-        return newString
     }
     
     private func prepareForShowNextScreen(indexPath: IndexPath) -> ScreenType?  {
@@ -119,7 +92,7 @@ class RepoViewController: UIViewController, ScreenType {
         } else if repoFile.type == RepoEntityType.file.rawValue {
             let newDetailsVC = DetailsViewController()
             newDetailsVC.title = repoFile.name
-            newDetailsVC.viewModel = DetailiewModel(repoFile: repoFile)
+            newDetailsVC.viewModel = DetailiewModel(repoFile: repoFile, currentBranch: viewModel!.currentBranch!)
             return newDetailsVC
         }
         return nil

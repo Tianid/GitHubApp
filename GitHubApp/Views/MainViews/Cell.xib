@@ -24,8 +24,8 @@
                             <constraint firstAttribute="width" constant="20" id="pKA-SN-Gtw"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-EX-DOg">
-                        <rect key="frame" x="9" y="4" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-EX-DOg">
+                        <rect key="frame" x="9" y="4" width="432" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,6 +46,7 @@
                     <constraint firstAttribute="bottom" secondItem="ppS-OS-4UL" secondAttribute="bottom" constant="6" id="Wnj-wn-e9S"/>
                     <constraint firstItem="vAN-ar-Sjv" firstAttribute="leading" secondItem="hOJ-fR-wZd" secondAttribute="leading" constant="9" id="vVL-nw-2Kg"/>
                     <constraint firstAttribute="bottom" secondItem="vAN-ar-Sjv" secondAttribute="bottom" constant="6" id="wae-zx-kHW"/>
+                    <constraint firstAttribute="trailing" secondItem="OSJ-EX-DOg" secondAttribute="trailing" constant="10" id="wfo-ws-ZsR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -53,7 +54,7 @@
                 <outlet property="languageLabel" destination="ppS-OS-4UL" id="Ibb-eT-5cv"/>
                 <outlet property="repoNameLabel" destination="OSJ-EX-DOg" id="jWm-ut-leh"/>
             </connections>
-            <point key="canvasLocation" x="90.579710144927546" y="66.629464285714278"/>
+            <point key="canvasLocation" x="90.579710144927546" y="65.959821428571431"/>
         </tableViewCell>
     </objects>
 </document>
